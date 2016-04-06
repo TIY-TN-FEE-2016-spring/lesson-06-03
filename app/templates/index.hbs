@@ -1,0 +1,41 @@
+<h2>Hello home page</h2>
+
+<form {{action saveNewRecipe on="submit"}}>
+  <h3>New Recipe</h3>
+
+  <p>
+    <label>Brewing Method</label>
+    <input type="text" placeholder="Brewing Method">
+  </p>
+
+  <p>
+    <label>Grind Number</label>
+    <input type="text" placeholder="Grind Number">
+  </p>
+
+  <p>
+    <label>Coffee Weight</label>
+    <input type="text" placeholder="Coffee Weight">
+  </p>
+
+  <p>
+    <label>Water Weight</label>
+    <input type="text" placeholder="Water Weight">
+  </p>
+
+  <p>
+    <label>Rating</label>
+    <input type="text" placeholder="Rating">
+  </p>
+
+  <p>
+    <button>Submit</button>
+  </p>
+</form>
+
+<ul>
+  {{#each model as |recipe|}}
+    {{log recipe}}
+    <li>{{recipe.method}}</li>
+  {{/each}}
+</ul>
