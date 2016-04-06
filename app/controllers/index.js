@@ -26,6 +26,17 @@ export default Ember.Controller.extend({
       });
   },
 
+  deleteRecipe(recipe) {
+    // Tell the server to delete
+    fetch(`https://tiny-tn.herokuapp.com/collections/coffee/${recipe._id}`, {
+      method: `Delete`,
+    }).then((res) => res.json())
+    .then((data) => {
+      // Update our list
+      this.removeRecipe(recipe);
+    });
+  },
+
   clearForm() {
     this.set(`method`, ``);
     this.set(`grind`, ``);
@@ -37,4 +48,10 @@ export default Ember.Controller.extend({
   addRecipe(recipe) {
     this.set(`model`, [recipe, ...this.model]);
   },
+
+  removeRecipe(recipe) {
+    this.set(`model`, this.model.filter((curr) => {
+      return curr !== recipe;
+    }));
+  }
 });

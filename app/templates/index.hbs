@@ -37,6 +37,9 @@
 <ul>
   {{#each model as |recipe|}}
     {{log recipe}}
-    <li>{{recipe.method}}</li>
+    <li>
+      {{recipe.method}}
+      <button {{action deleteRecipe recipe}}>X</button>
+    </li>
   {{/each}}
 </ul>
