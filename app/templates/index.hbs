@@ -1,45 +1,48 @@
-<h2>Hello home page</h2>
+{{#if editing}}
+  <h2>Show Editing Form</h2>
+{{else}}
+  <form {{action saveNewRecipe on="submit"}}>
+    <h3>New Recipe</h3>
 
-<form {{action saveNewRecipe on="submit"}}>
-  <h3>New Recipe</h3>
+    <p>
+      <label>Brewing Method</label>
+      {{input type="text" placeholder="Brewing Method" value=method}}
+    </p>
 
-  <p>
-    <label>Brewing Method</label>
-    {{input type="text" placeholder="Brewing Method" value=method}}
-  </p>
+    <p>
+      <label>Grind Number</label>
+      {{input type="text" placeholder="Grind Number" value=grind}}
+    </p>
 
-  <p>
-    <label>Grind Number</label>
-    {{input type="text" placeholder="Grind Number" value=grind}}
-  </p>
+    <p>
+      <label>Coffee Weight</label>
+      {{input type="text" placeholder="Coffee Weight" value=coffeeWeight}}
+    </p>
 
-  <p>
-    <label>Coffee Weight</label>
-    {{input type="text" placeholder="Coffee Weight" value=coffeeWeight}}
-  </p>
+    <p>
+      <label>Water Weight</label>
+      {{input type="text" placeholder="Water Weight" value=waterWeight}}
+    </p>
 
-  <p>
-    <label>Water Weight</label>
-    {{input type="text" placeholder="Water Weight" value=waterWeight}}
-  </p>
+    <p>
+      <label>Rating</label>
+      {{input type="text" placeholder="Rating" value=rating}}
+    </p>
 
-  <p>
-    <label>Rating</label>
-    {{input type="text" placeholder="Rating" value=rating}}
-  </p>
+    <p>
+      <button {{action clearForm}}>Reset</button>
+      <button>Submit</button>
+    </p>
+  </form>
 
-  <p>
-    <button {{action clearForm}}>Reset</button>
-    <button>Submit</button>
-  </p>
-</form>
-
-<ul>
-  {{#each model as |recipe|}}
-    {{log recipe}}
-    <li>
-      {{recipe.method}}
-      <button {{action deleteRecipe recipe}}>X</button>
-    </li>
-  {{/each}}
-</ul>
+  <ul>
+    {{#each model as |recipe|}}
+      {{log recipe}}
+      <li>
+        {{recipe.method}}
+        <button {{action deleteRecipe recipe}}>X</button>
+        <button {{action startEditing recipe}}>Edit</button>
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}

@@ -37,6 +37,10 @@ export default Ember.Controller.extend({
     });
   },
 
+  startEditing(recipe) {
+    this.set(`editing`, true);
+  },
+
   clearForm() {
     this.set(`method`, ``);
     this.set(`grind`, ``);
