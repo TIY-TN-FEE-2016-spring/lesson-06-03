@@ -5,30 +5,31 @@
 
   <p>
     <label>Brewing Method</label>
-    <input type="text" placeholder="Brewing Method">
+    {{input type="text" placeholder="Brewing Method" value=method}}
   </p>
 
   <p>
     <label>Grind Number</label>
-    <input type="text" placeholder="Grind Number">
+    {{input type="text" placeholder="Grind Number" value=grind}}
   </p>
 
   <p>
     <label>Coffee Weight</label>
-    <input type="text" placeholder="Coffee Weight">
+    {{input type="text" placeholder="Coffee Weight" value=coffeeWeight}}
   </p>
 
   <p>
     <label>Water Weight</label>
-    <input type="text" placeholder="Water Weight">
+    {{input type="text" placeholder="Water Weight" value=waterWeight}}
   </p>
 
   <p>
     <label>Rating</label>
-    <input type="text" placeholder="Rating">
+    {{input type="text" placeholder="Rating" value=rating}}
   </p>
 
   <p>
+    <button {{action clearForm}}>Reset</button>
     <button>Submit</button>
   </p>
 </form>
