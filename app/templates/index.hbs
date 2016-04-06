@@ -1,5 +1,37 @@
 {{#if editing}}
-  <h2>Show Editing Form</h2>
+  <form {{action updateRecipe editing on="submit"}}>
+    <h2>Editing {{editing._id}}</h2>
+
+    <p>
+      <label>Brewing Method</label>
+      {{input type="text" placeholder="Brewing Method" value=editing.method}}
+    </p>
+
+    <p>
+      <label>Grind Number</label>
+      {{input type="text" placeholder="Grind Number" value=editing.grind}}
+    </p>
+
+    <p>
+      <label>Coffee Weight</label>
+      {{input type="text" placeholder="Coffee Weight" value=editing.coffeeWeight}}
+    </p>
+
+    <p>
+      <label>Water Weight</label>
+      {{input type="text" placeholder="Water Weight" value=editing.waterWeight}}
+    </p>
+
+    <p>
+      <label>Rating</label>
+      {{input type="text" placeholder="Rating" value=editing.rating}}
+    </p>
+
+    <p>
+      <button {{action stopEditing}}>Back</button>
+      <button>Submit</button>
+    </p>
+  </form>
 {{else}}
   <form {{action saveNewRecipe on="submit"}}>
     <h3>New Recipe</h3>

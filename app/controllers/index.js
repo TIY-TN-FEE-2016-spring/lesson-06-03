@@ -38,7 +38,26 @@ export default Ember.Controller.extend({
   },
 
   startEditing(recipe) {
-    this.set(`editing`, true);
+    this.set(`editing`, recipe);
+  },
+
+  stopEditing() {
+    this.set(`editing`, false);
+  },
+
+  updateRecipe(recipe) {
+    fetch(`https://tiny-tn.herokuapp.com/collections/coffee/${recipe._id}`, {
+        method: `PUT`,
+        headers: {
+          Accept: `application/json`,
+          'Content-Type': `application/json`,
+        },
+        body: JSON.stringify(recipe),
+      }).then((res) => res.json())
+      .then((recipe) => {
+        // Done editing
+        this.stopEditing();
+      });
   },
 
   clearForm() {
